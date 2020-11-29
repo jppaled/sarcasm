@@ -4,19 +4,19 @@ function sarcasm() {
 
     let sarcasmPhrase = '';
     let cleanPhrase = phrase.toLowerCase();
-
+    let toggleCase = true;
+    
     for (let i = 0; i < cleanPhrase.length; i++) {
         let char = cleanPhrase[i];
-        
-        if (char !== '') {
-            if (i % 2 == 0) {
-                char = char.toLowerCase();
-            } else {
-                char = char.toUpperCase();
-            }
-            
-            sarcasmPhrase = sarcasmPhrase.concat(char);
+       
+        if (char !== '' && char !== ' ') {
+            char = toggleCase ? char.toLowerCase() : char.toUpperCase();
+          
+            toggleCase = !toggleCase;
         }
+        
+        sarcasmPhrase = sarcasmPhrase.concat(char);
     }
+    
     res.innerHTML = sarcasmPhrase;
 }
